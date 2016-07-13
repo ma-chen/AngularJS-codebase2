@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS Samples - To Do List</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-app="ToDOApp">
+
+    <div class="container" ng-controller="ToDoListCtrl">
+
+        <div class="page-header">
+            <h1>To Do List</h1>
+        </div>
+
+        <!-- Your code here -->
+        <table class="table">
+            <thead>
+                <tr class="row">
+                    <th class="col-md-2">#</th>
+                    <th class="col-md-6">Item</th>
+                    <th class="col-md-2"></th>
+                    <th class="col-md-2"></th>
+                </th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in list" class="row">
+                    <td class="col-md-2">{{ $index + 1 }}</td>
+                    <td class="col-md-6">{{ item.content }}</td>
+                    <td class="col-md-2">
+                        <span ng-if="item.done" class="text-success">done</span>
+                        <button ng-if="!item.done" type="button" class="btn btn-success" ng-click="completeItem($index);">Complete</button>
+                    </td>
+                    <td class="col-md-2">
+                        <button type="button" class="btn btn-danger" ng-click="deleteItem($index);">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="row">
+            <div class="col-md-3">
+                <input type="text" class="form-control" ng-model="newItem" />
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-primary" ng-click="appendItem();">Append</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
